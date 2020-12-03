@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "1": "node day-1/part1.js && node day-1/part2.js"
+    "1": "node day-1/part1.js && node day-1/part2.js",
+    "2": "node day-2/part1.js && node day-2/part2.js"
   },
   "keywords": [],
   "author": "",
