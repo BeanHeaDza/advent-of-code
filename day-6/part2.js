@@ -33,4 +33,4 @@ function main() {
   return output.map(i => i.length).reduce((sum, v) => sum + v, 0);
 }
 
-console.log("Part 1:", main());
+console.log("Part 2:", main());
