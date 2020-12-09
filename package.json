@@ -11,7 +11,8 @@
     "5": "node day-5/part1.js && node day-5/part2.js",
     "6": "node day-6/part1.js && node day-6/part2.js",
     "7": "node day-7/part1.js && node day-7/part2.js",
-    "8": "node day-8/part1.js && node day-8/part2.js"
+    "8": "node day-8/part1.js && node day-8/part2.js",
+    "9": "node day-9/part1.js && node day-9/part2.js"
   },
   "keywords": [],
   "author": "",
