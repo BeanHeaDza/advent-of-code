@@ -10,4 +10,4 @@ function main() {
   }
 }
 
-console.log("Part 1:", main());
+console.log(main());

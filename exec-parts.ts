@@ -30,7 +30,7 @@ export function exec(parts: Part[]) {
     if (prevYear !== year) {
       console.log("Year " + (year || "Unknown"));
     }
-    if (prevDay !== day) {
+    if (partPadding && prevDay !== day) {
       console.log(`${dayPadding}Day ${day || "Unknown"}`);
     }
 

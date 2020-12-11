@@ -14,4 +14,4 @@ function main() {
   }
 }
 
-console.log("Part 2:", main());
+console.log(main());
