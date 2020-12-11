@@ -14,7 +14,7 @@ export function exec(parts: Part[]) {
   let dayPadding = "";
   let partPadding = "";
 
-  if (parts.some((x) => x.year)) {
+  if (parts.some((x) => x.year !== parts[0].year)) {
     dayPadding = "  ";
     partPadding = "    ";
   } else if (parts.some((p) => p.day !== parts[0].day)) {
@@ -27,7 +27,7 @@ export function exec(parts: Part[]) {
     try {
       answer = execSync(`node ${path}`, { encoding: "utf-8" });
     } catch {}
-    if (prevYear !== year) {
+    if (dayPadding && prevYear !== year) {
       console.log("Year " + (year || "Unknown"));
     }
     if (partPadding && prevDay !== day) {
