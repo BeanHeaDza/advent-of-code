@@ -1,4 +1,4 @@
-function createGrid(init, ...dimensions) {
+export function createGrid(init: any, ...dimensions: number[]) {
   if (dimensions.length === 0) {
     return init;
   }
@@ -7,9 +7,9 @@ function createGrid(init, ...dimensions) {
 
   let output = [];
   for (let i = 0; i < x; i++) {
-    output.push(createGrid(init, ...dimensions.slice(0, dimensions.length - 1)));
+    output.push(
+      createGrid(init, ...dimensions.slice(0, dimensions.length - 1))
+    );
   }
   return output;
 }
-
-module.exports = { createGrid };

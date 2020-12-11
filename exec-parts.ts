@@ -1,6 +1,13 @@
-const { execSync } = require("child_process");
+import { execSync } from "child_process";
 
-function exec(parts) {
+interface Part {
+  path: string;
+  year: number;
+  day: number;
+  part: number;
+}
+
+export function exec(parts: Part[]) {
   let prevYear = null;
   let prevDay = null;
 
@@ -14,8 +21,12 @@ function exec(parts) {
     partPadding = "  ";
   }
 
-  for (const { path, year, day, part } of parts) {
-    const answer = execSync(`node ${path}`, { encoding: "utf-8" });
+  for (let { path, year, day, part } of parts) {
+    path = `out/${path.replace(/\.ts$/, ".js")}`;
+    let answer = "Error!";
+    try {
+      answer = execSync(`node ${path}`, { encoding: "utf-8" });
+    } catch {}
     if (prevYear !== year) {
       console.log("Year " + (year || "Unknown"));
     }
@@ -29,5 +40,3 @@ function exec(parts) {
     prevDay = day;
   }
 }
-
-module.exports = { exec };

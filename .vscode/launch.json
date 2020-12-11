@@ -3,6 +3,15 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "TS Launch Current File",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "outFiles": ["${workspaceFolder}/out/**/*.js"],
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/**"],
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Node Launch Current File",
       "program": "${file}",
       "console": "integratedTerminal",

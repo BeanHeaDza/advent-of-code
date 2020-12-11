@@ -1,7 +1,7 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
 function main() {
-  const numbers = readInput();
+  const numbers = readInput().map(Number);
   for (let x = 0; x < numbers.length; x++) {
     const first = numbers[x];
     for (let y = x + 1; y < numbers.length; y++) {

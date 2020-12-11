@@ -1,7 +1,7 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
 function main() {
-  const numbers = readInput();
+  const numbers = readInput().map(Number);
   for (const num of numbers) {
     const other = 2020 - num;
     if (numbers.includes(other)) {

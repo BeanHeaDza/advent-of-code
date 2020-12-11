@@ -1,10 +1,10 @@
-const { execSync } = require("child_process");
-const { exec } = require("./exec-parts");
+import { execSync } from "child_process";
+import { exec } from "./exec-parts";
 
 const paths = execSync("git status -s -uall", { encoding: "utf-8" });
 const parts = paths
   .split("\n")
-  .map((p) => /.. ((\d{4})?\/?day-(\d+)\/part(1|2)\.js)\b/.exec(p))
+  .map((p) => /.. ((\d{4})?\/?day-(\d+)\/part(1|2)\.ts)\b/.exec(p))
   .filter((p) => p)
   .map((p) => ({
     path: p[1],
