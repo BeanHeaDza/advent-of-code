@@ -1,9 +1,9 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getArrangements(input) {
+function getArrangements(input: number[]) {
   const arrangements = new Set();
 
-  function inner(numbers) {
+  function inner(numbers: number[]) {
     arrangements.add(numbers.join(","));
 
     for (let x = 0; x < numbers.length; x++) {
@@ -22,28 +22,28 @@ function getArrangements(input) {
 
 function main() {
   const input = readInput();
-  const nums = [...input, "0"].map(Number).sort((a, b) => a - b);
-  nums.push(nums[nums.length - 1] + 3);
+  const numbers = [...input, "0"].map(Number).sort((a, b) => a - b);
+  numbers.push(numbers[numbers.length - 1] + 3);
 
-  const subArrs = [];
+  const subArrays = [];
   let nextStart = 0;
 
-  for (let x = 1; x < nums.length; x++) {
-    const current = nums[x];
-    const prev = nums[x - 1];
+  for (let x = 1; x < numbers.length; x++) {
+    const current = numbers[x];
+    const prev = numbers[x - 1];
     if (current - prev === 3) {
-      subArrs.push(nums.slice(nextStart, x));
+      subArrays.push(numbers.slice(nextStart, x));
       nextStart = x;
     }
   }
 
-  subArrs.map(getArrangements);
+  subArrays.map(getArrangements);
 
   let answer = 1;
-  for (const x of subArrs.map(getArrangements)) {
+  for (const x of subArrays.map(getArrangements)) {
     answer *= x;
   }
   return answer;
 }
 
-console.log("Part 2:", main());
+console.log(main());

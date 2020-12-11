@@ -1,6 +1,6 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getBagContains(line) {
+function getBagContains(line: string) {
   const bagMatch = /^(.*?) bags contain/.exec(line);
   line = line.substr(bagMatch[0].length);
 
@@ -49,4 +49,4 @@ function main() {
   return answer;
 }
 
-console.log("Part 1:", main());
+console.log(main());

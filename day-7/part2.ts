@@ -1,6 +1,14 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getBagContains(line) {
+interface IBag {
+  bag: string;
+  contains: {
+    color: string;
+    count: number;
+  }[];
+}
+
+function getBagContains(line: string): IBag {
   const bagMatch = /^(.*?) bags contain/.exec(line);
   line = line.substr(bagMatch[0].length);
 
@@ -13,7 +21,7 @@ function getBagContains(line) {
 
   const re = /,? (\d+) (.*?) bags?/g;
   let match = re.exec(line);
-  const contains = [];
+  const contains: { color: string; count: number }[] = [];
   while (match) {
     contains.push({ color: match[2], count: +match[1] });
     match = re.exec(line);
@@ -24,10 +32,10 @@ function getBagContains(line) {
   };
 }
 
-function getBagCountFactory(bags) {
+function getBagCountFactory(bags: IBag[]) {
   const lookup = new Map();
 
-  return function getBagCount(color) {
+  return function getBagCount(color: string): number {
     if (lookup.has(color)) {
       return lookup.get(color);
     }
@@ -54,4 +62,4 @@ function main() {
   return getBagCount("shiny gold");
 }
 
-console.log("Part 2:", main());
+console.log(main());

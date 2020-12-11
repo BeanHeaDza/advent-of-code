@@ -1,13 +1,13 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
 const requiredFields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 const validEyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
 
-function between(x, min, max) {
+function between(x: string, min: number, max: number) {
   return !isNaN(+x) && +x >= min && +x <= max;
 }
 
-function validHeight(hgt) {
+function validHeight(hgt: string) {
   const match = /(\d+)(in|cm)/g.exec(hgt);
   if (!match) {
     return false;
@@ -24,7 +24,7 @@ function validHeight(hgt) {
   return false;
 }
 
-function isValid(passport) {
+function isValid(passport: { [key: string]: string }) {
   const keys = Object.keys(passport);
   if (!requiredFields.every((f) => keys.includes(f))) {
     return false;
@@ -43,9 +43,29 @@ function isValid(passport) {
   return true;
 }
 
+function parsePassports(lines: string[]): { [key: string]: string }[] {
+  const output = [];
+
+  let current = {};
+
+  for (const line of lines) {
+    if (line === "") {
+      output.push(current);
+      current = {};
+    } else {
+      for (const pair of line.split(" ")) {
+        const [key, value] = pair.split(":");
+        current[key] = value;
+      }
+    }
+  }
+
+  return output;
+}
+
 function main() {
-  const input = readInput();
+  const input = parsePassports(readInput());
   return input.filter((i) => isValid(i)).length;
 }
 
-console.log("Part 2:", main());
+console.log(main());

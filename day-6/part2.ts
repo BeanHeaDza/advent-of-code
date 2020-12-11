@@ -1,16 +1,16 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
 function main() {
-  const input = readInput();
+  const input = [...readInput(), ""];
 
-  const output = [];
+  const output: string[][] = [];
 
-  let current = new Map();
+  let current = new Map<string, number>();
   let lineCount = 0;
 
   for (const line of input) {
     if (line === "") {
-      const answers = [];
+      const answers: string[] = [];
 
       for (const [key, value] of current) {
         if (value === lineCount) {
@@ -29,8 +29,7 @@ function main() {
     }
   }
 
-
-  return output.map(i => i.length).reduce((sum, v) => sum + v, 0);
+  return output.map((i) => i.length).reduce((sum, v) => sum + v, 0);
 }
 
-console.log("Part 2:", main());
+console.log(main());

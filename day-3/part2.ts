@@ -1,6 +1,10 @@
-const { getAtIndexFactory } = require("./get-at-index");
+import { getAtIndexFactory } from "./get-at-index";
 
-function traverseTrees(getAtIndex, xInc, yInc) {
+function traverseTrees(
+  getAtIndex: (x: number, y: number) => string,
+  xInc: number,
+  yInc: number
+) {
   let x = 0,
     y = 0,
     charAtPos = undefined,
@@ -31,4 +35,4 @@ function main() {
   return answer;
 }
 
-console.log("Part 2:", main());
+console.log(main());

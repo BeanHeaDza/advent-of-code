@@ -1,6 +1,6 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getAtIndex(input, x, y) {
+function getAtIndex(input: string[], x: number, y: number) {
   if (x < 0 || x >= input[0].length) {
     return "L";
   }
@@ -11,8 +11,14 @@ function getAtIndex(input, x, y) {
   return input[y][x];
 }
 
-function lookOverEmpty(input, x, y, xInc, yInc) {
-  let char;
+function lookOverEmpty(
+  input: string[],
+  x: number,
+  y: number,
+  xInc: number,
+  yInc: number
+) {
+  let char: string;
   do {
     x += xInc;
     y += yInc;
@@ -22,7 +28,7 @@ function lookOverEmpty(input, x, y, xInc, yInc) {
   return char;
 }
 
-function getOccupiedNeighbors(input, x, y) {
+function getOccupiedNeighbors(input: string[], x: number, y: number) {
   let occupied = 0;
 
   if (lookOverEmpty(input, x, y, 1, 0) === "#") occupied++;
@@ -57,7 +63,7 @@ function calculateNextStyle(input, x, y) {
 
 function main() {
   let input = readInput();
-  let previous;
+  let previous: string;
 
   do {
     previous = input.join("\n");
@@ -75,4 +81,4 @@ function main() {
   return previous.split("").filter((c) => c === "#").length;
 }
 
-console.log("Part 2:", main());
+console.log(main());

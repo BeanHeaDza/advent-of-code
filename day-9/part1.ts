@@ -1,6 +1,6 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function isValid(arr, num) {
+function isValid(arr: number[], num: number) {
   for (let x = 0; x < arr.length; x++) {
     const elementX = arr[x];
     for (let y = x + 1; y < arr.length; y++) {
@@ -27,4 +27,4 @@ function main() {
   }
 }
 
-console.log("Part 1:", main());
+console.log(main());

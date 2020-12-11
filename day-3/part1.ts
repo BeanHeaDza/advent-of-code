@@ -1,4 +1,4 @@
-const { getAtIndexFactory } = require("./get-at-index");
+import { getAtIndexFactory } from "./get-at-index";
 
 function main() {
   let x = 0,
@@ -19,4 +19,4 @@ function main() {
   return trees;
 }
 
-console.log("Part 1:", main());
+console.log(main());

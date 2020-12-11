@@ -1,6 +1,6 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function run(lines) {
+function run(lines: string[]) {
   const usedInstructions = [];
   let acc = 0;
   let index = 0;
@@ -46,4 +46,4 @@ function main() {
   }
 }
 
-console.log("Part 2:", main());
+console.log(main());

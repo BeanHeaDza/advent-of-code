@@ -1,6 +1,6 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function isValid(arr, num) {
+function isValid(arr: number[], num: number) {
   for (let x = 0; x < arr.length; x++) {
     const elementX = arr[x];
     for (let y = x + 1; y < arr.length; y++) {
@@ -13,7 +13,7 @@ function isValid(arr, num) {
   return false;
 }
 
-function findFirstInvalid(numbers) {
+function findFirstInvalid(numbers: number[]) {
   const pre = 25;
 
   for (let index = pre; index < numbers.length; index++) {
@@ -25,7 +25,7 @@ function findFirstInvalid(numbers) {
   }
 }
 
-function searchRange(numbers, target) {
+function searchRange(numbers: number[], target: number) {
   let sum = numbers[0];
   let lower = 0;
   let upper = 0;
@@ -62,4 +62,4 @@ function main() {
   return searchRange(numbers, target);
 }
 
-console.log("Part 2:", main());
+console.log(main());

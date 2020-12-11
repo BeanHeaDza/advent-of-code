@@ -1,11 +1,11 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
 function main() {
-  const input = readInput();
+  const input = [...readInput(), ""];
 
   const output = [];
 
-  let current = new Set();
+  let current = new Set<string>();
 
   for (const line of input) {
     if (line === "") {
@@ -22,7 +22,7 @@ function main() {
     output.push([...current]);
   }
 
-  return output.map(i => i.length).reduce((sum, v) => sum + v, 0);
+  return output.map((i) => i.length).reduce((sum, v) => sum + v, 0);
 }
 
-console.log("Part 1:", main());
+console.log(main());

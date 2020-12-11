@@ -1,10 +1,10 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getAtIndexFactory() {
+export function getAtIndexFactory() {
   const lines = readInput();
   const width = lines[0].length;
 
-  return function getAtIndex(x, y) {
+  return function getAtIndex(x: number, y: number): string {
     if (y < 0 || y >= lines.length || x < 0) {
       return undefined;
     }
@@ -13,5 +13,3 @@ function getAtIndexFactory() {
     return lines[y][x];
   };
 }
-
-module.exports = { getAtIndexFactory };

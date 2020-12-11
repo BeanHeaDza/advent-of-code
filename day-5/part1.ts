@@ -1,9 +1,9 @@
-const { readInput } = require("./read-input");
+import { readInput } from "../common";
 
-function getSeatId(codes) {
+function getSeatId(codes: string) {
   let min = 0,
     max = 127,
-    id;
+    id: number;
 
   for (const c of codes.split("").slice(0, 7)) {
     const mid = (min + max) / 2;
@@ -45,4 +45,4 @@ function main() {
   return maxId;
 }
 
-console.log("Part 1:", main());
+console.log(main());
