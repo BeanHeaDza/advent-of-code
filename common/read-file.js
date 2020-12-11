@@ -1,17 +1,18 @@
 const fs = require("fs");
+const path = require("path");
 
-function readContent(content, method) {
-  if (method === "map") {
-    return content.split("\n").map(line => line.split(""));
-  } else if (method === "lines") {
-    return content.split("\n");
+function readInput() {
+  const stack = new Error().stack.split("\n");
+  const root = stack[2].replace(/ *at .* \((.*)\/.*\.js:\d+:\d+\)$/g, "$1");
+  const fileName = path.resolve(root, "input.txt");
+
+  const content = fs.readFileSync(fileName, { encoding: "utf8" });
+  const lines = content.split("\n");
+  if (lines[lines.length - 1] === "") {
+    lines.length--;
   }
-  return content;
+
+  return lines;
 }
 
-function readFile(path, method) {
-  const content = fs.readFileSync(path, { encoding: "utf8" });
-  return readContent(content, method);
-}
-
-module.exports = { readContent, readFile };
+module.exports = { readInput };
