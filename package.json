@@ -13,7 +13,8 @@
     "7": "node day-7/part1.js && node day-7/part2.js",
     "8": "node day-8/part1.js && node day-8/part2.js",
     "9": "node day-9/part1.js && node day-9/part2.js",
-    "10": "node day-10/part1.js && node day-10/part2.js"
+    "10": "node day-10/part1.js && node day-10/part2.js",
+    "11": "node day-11/part1.js && node day-11/part2.js"
   },
   "keywords": [],
   "author": "",
