@@ -1,4 +1,4 @@
-import { readInput } from "../../common";
+import { parsePassports } from "./parse-passports";
 
 const requiredFields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"];
 const validEyeColors = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"];
@@ -24,7 +24,7 @@ function validHeight(hgt: string) {
   return false;
 }
 
-function isValid(passport: { [key: string]: string }) {
+function isValid(passport: { [key: string]: string }): boolean {
   const keys = Object.keys(passport);
   if (!requiredFields.every((f) => keys.includes(f))) {
     return false;
@@ -43,28 +43,8 @@ function isValid(passport: { [key: string]: string }) {
   return true;
 }
 
-function parsePassports(lines: string[]): { [key: string]: string }[] {
-  const output = [];
-
-  let current = {};
-
-  for (const line of lines) {
-    if (line === "") {
-      output.push(current);
-      current = {};
-    } else {
-      for (const pair of line.split(" ")) {
-        const [key, value] = pair.split(":");
-        current[key] = value;
-      }
-    }
-  }
-
-  return output;
-}
-
 function main() {
-  const input = parsePassports(readInput());
+  const input = parsePassports();
   return input.filter((i) => isValid(i)).length;
 }
 
