@@ -31,3 +31,24 @@ export function combinations<T>(array: T[], num: number): T[][] {
   }
   return combos;
 }
+
+export function combinationsRepeat<T>(arr: T[], r: number = arr.length): T[][] {
+  const data = Array(r); // Used to store state
+  const results: T[][] = []; // Array of results
+
+  const loop = (pos: number, start: number) => {
+    if (pos === r) {
+      // End reached
+      results.push(data.slice()); // Add a copy of data to results
+      return;
+    }
+    for (var i = start; i < arr.length; ++i) {
+      data[pos] = arr[i]; // Update data
+      loop(pos + 1, i); // Call loop recursively
+    }
+  };
+
+  loop(0, 0);
+
+  return results; // Return results
+}
