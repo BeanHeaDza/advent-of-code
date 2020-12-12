@@ -1,23 +1,25 @@
-const { readInput } = require("../../common/read-file");
+import memoizee from "memoizee";
+import { readInput } from "../../common";
 
-function evalFactory(lookup) {
+function evalFactory(lookup: Map<string, string>) {
   const cache = new Map();
-  function eval(x) {
+
+  function evalExp(x: string): number {
     if (cache.has(x)) {
       return cache.get(x);
     }
 
-    if (!isNaN(x)) {
+    if (!isNaN(+x)) {
       return +x;
     }
 
-    let value;
+    let value: number;
 
     const statement = lookup.get(x);
 
     const parts = statement.trim().split(" ");
     if (parts.length === 1) {
-      value = eval(parts[0]);
+      value = evalExp(parts[0]);
     } else {
       if (parts.length === 2) {
         parts.splice(0, 0, "");
@@ -27,34 +29,35 @@ function evalFactory(lookup) {
 
       switch (op) {
         case "AND":
-          value = eval(left) & eval(right);
+          value = evalExp(left) & evalExp(right);
           break;
         case "OR":
-          value = eval(left) | eval(right);
+          value = evalExp(left) | evalExp(right);
           break;
         case "LSHIFT":
-          value = eval(left) << +right;
+          value = evalExp(left) << +right;
           break;
         case "RSHIFT":
-          value = eval(left) >> +right;
+          value = evalExp(left) >> +right;
           break;
         case "NOT":
-          value = ~eval(right);
+          value = ~evalExp(right);
           break;
         default:
-          throw new Error("Broken!");
+          throw new Error();
       }
     }
     value = value & 65535;
     cache.set(x, +value);
     return value;
   }
-  return eval;
+
+  return memoizee(evalExp);
 }
 
 function main() {
   const input = readInput();
-  const ops = input.map((l) => l.split(" -> ").reverse());
+  const ops = input.map((l) => l.split(" -> ").reverse()) as [string, string][];
   const opLookup = new Map(ops);
   const a = evalFactory(opLookup)("a");
   opLookup.set("b", "" + a);

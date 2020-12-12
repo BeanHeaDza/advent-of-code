@@ -1,6 +1,6 @@
-const { readInput } = require("../../common/read-file");
+import { readInput } from "../../common";
 
-function isNice(line) {
+function isNice(line: string) {
   if (!/(\w\w).*\1/.test(line)) return false;
   if (!/(\w).\1/.test(line)) return false;
 

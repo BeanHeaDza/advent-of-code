@@ -1,6 +1,6 @@
-const { readInput } = require("../../common/read-file");
+import { readInput } from "../../common";
 
-function move(houses, instructions) {
+function move(houses: Map<string, number>, instructions: string[]) {
   let x = 0;
   let y = 0;
 
@@ -18,8 +18,14 @@ function main() {
   const [input] = readInput();
   const houses = new Map([["0,0", 1]]);
 
-  move(houses, input.split("").filter((_, i) => i % 2 === 0));
-  move(houses, input.split("").filter((_, i) => i % 2 === 1));
+  move(
+    houses,
+    input.split("").filter((_, i) => i % 2 === 0)
+  );
+  move(
+    houses,
+    input.split("").filter((_, i) => i % 2 === 1)
+  );
 
   return houses.size;
 }

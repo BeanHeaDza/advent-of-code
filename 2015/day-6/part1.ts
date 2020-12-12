@@ -1,11 +1,10 @@
-const { createGrid } = require("../../common/create-grid");
-const { readInput } = require("../../common/read-file");
+import { createGrid, readInput } from "../../common";
 
 const instruction = /(turn on|turn off|toggle) (\d+),(\d+) through (\d+),(\d+)/;
 
 function main() {
   const input = readInput();
-  const grid = createGrid(0, 1000, 1000);
+  const grid = createGrid(false, 1000, 1000);
 
   for (const line of input) {
     const match = instruction.exec(line);
@@ -14,13 +13,9 @@ function main() {
 
     for (let x = sX; x <= eX; x++) {
       for (let y = sY; y <= eY; y++) {
-        if (action === "turn on") {
-          grid[y][x] += 1;
-        } else if (action === "turn off") {
-          grid[y][x] = Math.max(grid[y][x] - 1, 0);
-        } else {
-          grid[y][x] += 2;
-        }
+        if (action === "turn on") grid[y][x] = true;
+        else if (action === "turn off") grid[y][x] = false;
+        else grid[y][x] = !grid[y][x];
       }
     }
   }
@@ -29,7 +24,9 @@ function main() {
   for (let y = 0; y < grid.length; y++) {
     const row = grid[y];
     for (let x = 0; x < row.length; x++) {
-      answer += row[x];
+      if (row[x]) {
+        answer++;
+      }
     }
   }
 

@@ -1,6 +1,6 @@
-const { readInput } = require("../../common/read-file");
+import { readInput } from "../../common";
 
-function isNice(line) {
+function isNice(line: string) {
   if (line.split("").filter((x) => /[aeiou]/.test(x)).length < 3) return false;
   if (!/(\w)\1/.test(line)) return false;
   if (/ab|cd|pq|xy/.test(line)) return false;

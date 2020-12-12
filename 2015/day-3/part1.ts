@@ -1,4 +1,4 @@
-const { readInput } = require("../../common/read-file");
+import { readInput } from "../../common";
 
 function main() {
   const [input] = readInput();
