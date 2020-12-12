@@ -1,0 +1,16 @@
+{
+  "New part": {
+    "prefix": "new-part",
+    "scope": "typescript",
+    "body": [
+      "import { readInput } from \"../../common\";",
+      "",
+      "function main() {",
+      "\tconst input = readInput();",
+      "\t$0",
+      "}",
+      "",
+      "console.log(main());"
+    ]
+  }
+}
