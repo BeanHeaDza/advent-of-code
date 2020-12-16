@@ -16,7 +16,7 @@ function main() {
 
   let invalidCount = 0;
 
-  for (const nearby of input.nearbyNumbers) {
+  for (const nearby of input.tickets) {
     for (const num of nearby) {
       let valid = false;
       for (const range of input.ranges) {

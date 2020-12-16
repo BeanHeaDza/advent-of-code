@@ -24,14 +24,10 @@ function isValidTicket(ticket: number[], ranges: IRange[]) {
   return true;
 }
 
-function getRemainingTickets(input: {
-  ranges: IRange[];
-  myNumbers: number[];
-  nearbyNumbers: number[][];
-}) {
-  let remainingTickets: number[][] = [input.myNumbers];
+function getRemainingTickets(input: { ranges: IRange[]; tickets: number[][] }) {
+  let remainingTickets: number[][] = [];
 
-  for (const nearBy of input.nearbyNumbers) {
+  for (const nearBy of input.tickets) {
     if (isValidTicket(nearBy, input.ranges)) {
       remainingTickets.push(nearBy);
     }
@@ -91,7 +87,7 @@ function main() {
 
   let answer = 1;
   for (const x of mappedOptions.filter((o) => o.name.startsWith("departure"))) {
-    answer *= input.myNumbers[x.index];
+    answer *= input.tickets[0][x.index];
   }
 
   return answer;

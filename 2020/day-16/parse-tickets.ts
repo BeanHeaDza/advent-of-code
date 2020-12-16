@@ -8,51 +8,22 @@ export interface IRange {
   max2: number;
 }
 
-function parseRange(line: string): IRange {
-  const [name, right] = line.split(":");
-
-  const [first, second] = right.split(" or ");
-
-  const [min1, max1] = first.split("-").map(Number);
-  const [min2, max2] = second.split("-").map(Number);
-
-  return { name, min1, max1, min2, max2 };
-}
-
-enum Step {
-  ranges,
-  myTicket,
-  nearbyTickets,
-}
-
 export function parseTickets() {
   const input = readInput();
-
   const ranges: IRange[] = [];
-  let myNumbers: number[];
-  let nearbyNumbers: number[][] = [];
-
-  let step = Step.ranges;
+  const tickets: number[][] = [];
 
   for (const line of input) {
-    if (line === "") {
-      step++;
-    }
+    const rangeMatch = /(.*): (\d+)-(\d+) or (\d+)-(\d+)/.exec(line);
 
-    if (step === Step.ranges) {
-      ranges.push(parseRange(line));
-    } else if (step === Step.myTicket) {
-      const numbers = line.split(",").map(Number);
-      if (numbers.length > 1) {
-        myNumbers = numbers;
-      }
-    } else {
-      const numbers = line.split(",").map(Number);
-      if (numbers.length > 1) {
-        nearbyNumbers.push(numbers);
-      }
+    if (rangeMatch) {
+      const name = rangeMatch[1];
+      const [min1, max1, min2, max2] = rangeMatch.slice(2).map(Number);
+      ranges.push({ name, min1, max1, min2, max2 });
+    } else if (/^[\d,]+$/.test(line)) {
+      tickets.push(line.split(",").map(Number));
     }
   }
 
-  return { ranges, myNumbers, nearbyNumbers };
+  return { ranges, tickets };
 }
