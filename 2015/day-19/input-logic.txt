@@ -1,0 +1,48 @@
+Al => ThF XX
+B => BCa XX
+B => TiB XX
+Ca => CaCa XX
+Ca => PB XX
+Ca => SiTh XX
+F => CaF XX
+F => PMg XX
+F => SiAl XX
+H => HCa XX
+H => NTh XX
+H => OB XX
+Mg => BF XX
+Mg => TiMg XX
+N => HSi XX
+O => HP XX
+O => OTi XX
+P => CaP XX
+P => PTi XX
+Si => CaSi XX
+Th => ThCa XX
+Ti => BP XX
+Ti => TiTi XX
+e => HF XX
+e => NAl XX
+e => OMg XX
+
+H => NRnMgAr X(X)
+Ca => SiRnMgAr X(X)
+P => SiRnFAr X(X)
+H => ORnFAr X(X)
+O => CRnMgAr X(X)
+N => CRnFAr X(X)
+O => NRnFAr X(X)
+Al => ThRnFAr X(X)
+B => TiRnFAr X(X)
+Ca => PRnFAr X(X)
+H => CRnAlAr X(X)
+O => CRnFYFAr X(X.X)
+Ca => SiRnFYFAr X(X.X)
+H => CRnFYMgAr X(X.X)
+H => CRnMgYFAr X(X.X)
+H => NRnFYFAr X(X.X)
+H => CRnFYFYFAr X(X.X.X)
+
+X(XXXX)XXXXXXXXXXXXXX(X)(X)XXXXXXXXXXXXXXX(X.X)X(X)XX(XXXXX.XXX)X(XX(X(X)XX)XXXXX(XXX)XXXXXXX.X)XX(X)X(XXX)(XX)XX(X(X)X.XX(X)XXXXX(X)XXXX(X)XXXXXX(XX)X)XXXXXXX(X)XXX(X)XXXX(XXX)XXX(X)XXXXXXXXXXXXXX(X)XXXXXXXXXXXXX(X.X)XXX(X)XXXXXXX(X(X)XX(X)X(XXXXXX(XX).XX(X)XXXXXXX)XXX)XX(X)(XXXX)X(X)X(XX)X
+
+X(X)X(X)(X)X(X.X)X(X)X(X.X)X(X(X(X)X)X(X)X.X)X(X)X(X)(X)X(X(X)X.X(X)X(X)X(X)X(X)X)X(X)X(X)X(X)X(X)X(X)X(X.X)X(X)X(X(X)X(X)X(X(X).X(X)X)X)X(X)(X)X(X)X(X)X
