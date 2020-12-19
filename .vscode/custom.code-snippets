@@ -12,5 +12,10 @@
       "",
       "console.log(main());"
     ]
+  },
+  "Generator": {
+    "prefix": "generator",
+    "scope": "typescript",
+    "body": ["function* $1 ($2): Generator<$3> {", "\t$0", "}"]
   }
 }
