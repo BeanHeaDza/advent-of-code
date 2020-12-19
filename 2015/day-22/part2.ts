@@ -1,3 +1,5 @@
+export {};
+
 const BOSS_HP = 51;
 const BOSS_DAMAGE = 9;
 

@@ -5,6 +5,7 @@
     "outDir": "out",
     "sourceMap": true,
     "downlevelIteration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedModules": true
   }
 }
