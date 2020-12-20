@@ -1,5 +1,8 @@
 export function createGrid(init: any, ...dimensions: number[]) {
   if (dimensions.length === 0) {
+    if (typeof init === "function") {
+      return init();
+    }
     return init;
   }
 
