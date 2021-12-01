@@ -27,15 +27,18 @@ function readLine(i: Interface) {
 
 async function main() {
   const i = createInterface({ input: process.stdin, output: process.stdout });
+  
+  const now = new Date();
+  const nowYear = now.getFullYear();
+  const nowDay = now.getDate();
 
-  i.write("Year?\n");
+  i.write(`Year? (Leave blank for ${nowYear})\n`);
   const year = await readLine(i);
-  i.write("Day?\n");
+  i.write(`Day? (Leave blank for ${nowDay})\n`);
   const day = await readLine(i);
 
-  const now = new Date();
 
-  const dayDir = `${year || now.getFullYear()}/day-${day || now.getDate()}`;
+  const dayDir = `${year || nowYear}/day-${day || nowDay}`;
 
   if (!existsSync(dayDir)) {
     mkdirSync(dayDir, { recursive: true });
