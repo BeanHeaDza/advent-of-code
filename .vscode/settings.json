@@ -4,10 +4,11 @@
     "source.organizeImports": true
   },
   "cSpell.words": [
-    "LSHIFT",
-    "RSHIFT",
     "aeiou",
-    "memoizee"
+    "datastructures",
+    "LSHIFT",
+    "memoizee",
+    "RSHIFT"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[typescript]": {
