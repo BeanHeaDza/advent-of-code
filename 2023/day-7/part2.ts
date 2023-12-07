@@ -13,9 +13,6 @@ class Hand {
       multiplier *= CARDS.length;
     }
     this.sortValue += getType(hand) * multiplier;
-    if (hand.includes("J")) {
-      console.log(`Hand: ${hand}, Type: ${getType(hand)}`);
-    }
   }
 }
 
